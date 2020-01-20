@@ -1,4 +1,6 @@
 # dqcsim-openqasm
+[![Crates.io](https://badgen.net/crates/v/dqcsim-openqasm)](https://crates.io/crates/dqcsim-openqasm/)
+
 An [OpenQASM 2.0](https://arxiv.org/abs/1707.03429) frontend plugin for [DQCsim](https://github.com/mbrobbel/dqcsim).
 
 ## Usage
