@@ -1,0 +1,23 @@
+[package]
+name = "dqcsim-openqasm"
+version = "0.1.0"
+authors = ["Matthijs Brobbel <m1brobbel@gmail.com>"]
+description = "An OpenQASM 2.0 frontend plugin for DQCsim"
+repository = "https://github.com/mbrobbel/dqcsim-openqasm"
+readme = "README.md"
+keywords = ["dqcsim", "openqasm", "quantum"]
+categories = ["simulation", "science"]
+license = "Apache-2.0"
+edition = "2018"
+
+[[bin]]
+name = "dqcsfeqasm"
+path = "src/main.rs"
+
+[dependencies]
+dqcsim = "0.0"
+meval = "0.2"
+num-complex = "0.2"
+qasm = "1.0"
+serde_json = "1.0"
+structopt = "0.3"
