@@ -15,7 +15,7 @@ name = "dqcsfeqasm"
 path = "src/main.rs"
 
 [dependencies]
-dqcsim = "0.0"
+dqcsim = "0.1"
 meval = "0.2"
 num-complex = "0.2"
 qasm = "1.0"
