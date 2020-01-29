@@ -7,6 +7,7 @@ use dqcsim::{
             QubitRef,
         },
     },
+    debug, info,
     plugin::{definition::PluginDefinition, state::PluginState},
     trace, warn,
 };
@@ -76,6 +77,37 @@ type QasmProgram = Vec<AstNode>;
 
 /// A BitStore is a map of classical bit registers.
 struct BitStore(HashMap<String, Vec<bool>>);
+
+impl std::fmt::Display for BitStore {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        writeln!(
+            f,
+            "Classical registers (identifier | numeric value | bits)\n"
+        )?;
+        for (key, value) in self.0.iter() {
+            writeln!(
+                f,
+                "{:width$} | {:value$} | {:?}",
+                key,
+                self.value(key).unwrap(),
+                value
+                    .iter()
+                    .rev()
+                    .map(|v| if *v { 1 } else { 0 })
+                    .collect::<Vec<usize>>(),
+                width = 5.max(self.0.keys().map(|x| x.len()).max().unwrap()),
+                value = 5.max(
+                    self.0
+                        .keys()
+                        .map(|x| self.value(x).unwrap().to_string().len())
+                        .max()
+                        .unwrap()
+                ),
+            )?;
+        }
+        Ok(())
+    }
+}
 
 impl BitStore {
     /// Constructs a new empty BitStore.
@@ -167,6 +199,7 @@ impl<'state, 'def> Program<'state, 'def> {
     // Run this `Program` with the provided `QasmProgram`.
     fn run(&mut self, ast: QasmProgram) -> Result<()> {
         for node in ast {
+            debug!("{:?}", node);
             match node {
                 // Declare a named register of qubits.
                 AstNode::QReg(identifier, count) => {
@@ -230,6 +263,9 @@ impl<'state, 'def> Program<'state, 'def> {
                 }
             }
         }
+
+        // Output bitstore state
+        info!("{}", self.bit);
 
         // Free resources.
         self.state
