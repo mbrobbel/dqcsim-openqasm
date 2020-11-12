@@ -1,6 +1,6 @@
 [package]
 name = "dqcsim-openqasm"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Matthijs Brobbel <m1brobbel@gmail.com>"]
 description = "An OpenQASM 2.0 frontend plugin for DQCsim"
 repository = "https://github.com/mbrobbel/dqcsim-openqasm"
