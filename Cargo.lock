@@ -222,9 +222,9 @@ dependencies = [
 
 [[package]]
 name = "dqcsim"
-version = "0.2.5"
+version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "342e5eefa1ce40771b33b6b69ee2987b5166fa27181c0292f2ea058db4949d56"
+checksum = "d1e67667f9eb0b8f64e2073a8440656444bf31f183eba9c68dae2b872eafbca9"
 dependencies = [
  "backtrace",
  "crossbeam-channel",
